@@ -57,10 +57,9 @@ const heap = [];
 heapq.heappush(heap, 10);
 heapq.heappush(heap, 1);
 heapq.heappush(heap, 5);
-console.log(heapq.heappop(heap)) // 1
+console.log(heapq.heappop(heap)); // 1
+console.log(heap); // [1, 10, 5]
 ```
-
-TODO - Describe the functions available in the library
 
 ## Development Setup
 

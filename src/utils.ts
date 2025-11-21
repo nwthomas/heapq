@@ -17,19 +17,6 @@ function getParentIndex(index: number): number {
 }
 
 export function siftDown<T>(heap: T[], index: number, cmp: Comparator<T>): void {
-    while (index > 0) {
-        const parentIndex = getParentIndex(index);
-
-        if (cmp(heap[parentIndex]!, heap[index]!)) {
-            break;
-        }
-
-        swap(heap, index, parentIndex);
-        index = parentIndex;
-    }
-}
-
-export function siftUp<T>(heap: T[], index: number, cmp: Comparator<T>): void {
     const n = heap.length;
     const item = heap[index];
 
@@ -51,6 +38,19 @@ export function siftUp<T>(heap: T[], index: number, cmp: Comparator<T>): void {
     }
 
     heap[index]! = item!;
+}
+
+export function siftUp<T>(heap: T[], index: number, cmp: Comparator<T>): void {
+    while (index > 0) {
+        const parentIndex = getParentIndex(index);
+
+        if (cmp(heap[parentIndex]!, heap[index]!)) {
+            break;
+        }
+
+        swap(heap, index, parentIndex);
+        index = parentIndex;
+    }
 }
 
 export function swap<T>(array: T[], indexOne: number, indexTwo: number): void {

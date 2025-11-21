@@ -4,67 +4,60 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is `@nwthomas/heapq`, a TypeScript implementation of Python's heapq module. The project is an npm package that provides heap queue (priority queue) algorithms.
+This is a TypeScript implementation of Python's heapq module, providing a min-heap data structure that operates on standard JavaScript arrays using functional APIs rather than classes.
 
-## Build & Development Commands
+## Commands
 
-- `bun install` - Install dependencies
-- `bun run build` - Clean and compile TypeScript to `lib/` directory
-- `bun run clean` - Remove the `lib/` build output directory
-- `bun test` - Run tests (using Bun's built-in test runner)
+### Development
+- `bun install` or `make install` - Install dependencies
+- `bun run build` or `make build` - Compile TypeScript to JavaScript in `lib/` directory
+- `bun run clean` or `make clean` - Remove compiled output
 
-### Build Process
+### Testing
+- `bun run test` or `make test` - Run all Jest tests
+- `make test-watch` - Run tests in watch mode
+- `jest ./test/utils.test.ts` - Run a specific test file
 
-The build process uses TypeScript compiler (tsc) to:
-- Compile TypeScript from `src/` to `lib/`
-- Generate declaration files (`.d.ts`) in `lib/types/`
-- Generate declaration maps for IDE support
+## Architecture
 
-The `prepack` script automatically runs the build before publishing to npm.
+### Core Heap Implementation (`src/heap.ts`)
 
-## Runtime & Tooling
+The library provides five main heap operations that mirror Python's heapq API:
 
-This project uses **Bun** instead of Node.js/npm/pnpm:
+- `heappush(heap, value, cmp?)` - Add element while maintaining heap invariant
+- `heappop(heap, cmp?)` - Remove and return smallest element
+- `heappushpop(heap, value, cmp?)` - Push then pop (more efficient than separate operations)
+- `heapreplace(heap, value, cmp?)` - Pop then push (more efficient than separate operations)
+- `heapify(heap, cmp?)` - Transform array into valid heap in-place
 
-- Use `bun <file>` instead of `node <file>` or `ts-node <file>`
-- Use `bun test` instead of `jest` or `vitest`
-- Use `bun install` instead of `npm install`
-- Use `bun run <script>` instead of `npm run <script>`
-- Bun automatically loads .env files (no dotenv package needed)
+All operations accept an optional custom comparator function.
 
-### Bun-Specific APIs (if needed in future)
+### Heap Utilities (`src/utils.ts`)
 
-- `Bun.file` for file operations (prefer over `node:fs`)
-- `bun:sqlite` for SQLite (not `better-sqlite3`)
-- `bun:test` for testing with `import { test, expect } from "bun:test"`
+Contains the core heap algorithms:
+
+- `siftDown(heap, index, cmp)` - Restore heap property by moving element down (used when parent > children)
+- `siftUp(heap, index, cmp)` - Restore heap property by moving element up (used when child < parent)
+- `defaultComparator(a, b)` - Default min-heap comparator (returns `a < b`)
+- Helper functions use bitwise operations for performance:
+  - Left child: `(index << 1) + 1`
+  - Right child: `(index << 1) + 2`
+  - Parent: `(index - 1) >> 1`
+
+### Type System (`src/types.ts`)
+
+- `Comparator<T>` - Function type `(a: T, b: T) => boolean` for custom ordering
+
+### Design Principles
+
+1. **Functional API**: Operations mutate arrays in-place (like Python's heapq) rather than using class instances
+2. **Min-heap by default**: Smallest element at index 0, customizable via comparator
+3. **Zero-based indexing**: Binary heap stored in array using standard index calculations
+4. **Custom comparators**: All operations support optional comparator for custom ordering (e.g., max-heap, priority queues)
 
 ## TypeScript Configuration
 
-The project uses strict TypeScript settings:
-- Target: ESNext
-- Module: Preserve (for modern module output)
-- Strict mode enabled with additional safety checks:
-  - `noUncheckedIndexedAccess: true`
-  - `noImplicitOverride: true`
-  - `noFallthroughCasesInSwitch: true`
-
-## Package Structure
-
-- **Entry point**: `src/index.ts`
-- **Build output**: `lib/` (gitignored, generated on build)
-- **Published files**: Only `lib/**/*` is included in the npm package
-- **Type definitions**: Generated automatically in `lib/index.d.ts`
-
-## Testing
-
-Tests should be placed in files matching `*.test.ts` pattern. Use Bun's test framework:
-
-```typescript
-import { test, expect } from "bun:test";
-
-test("example test", () => {
-  expect(true).toBe(true);
-});
-```
-
-Run tests with `bun test`.
+- Target: ESNext with bundler module resolution
+- Strict mode enabled with `noUncheckedIndexedAccess` and `noImplicitOverride`
+- Output: `lib/` directory with declaration files and source maps
+- `noEmit: true` in tsconfig but build script runs `tsc` to generate output
