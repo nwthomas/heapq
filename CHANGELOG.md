@@ -1,5 +1,11 @@
 # @nwthomas/heapq
 
+## 0.0.1
+
+### Patch Changes
+
+-   [`e58c3de`](https://github.com/nwthomas/heapq/commit/e58c3de5be8c1cbbb73f2db9b67a5a0a920efe11) Thanks [@nwthomas](https://github.com/nwthomas)! - Remove incorrect GitHub token for publish workflow
+
 ## 0.0.0
 
 ### Patch Changes
