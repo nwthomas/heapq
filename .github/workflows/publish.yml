@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - main
+  workflow_run:
+    workflows: ["Tests"]
+    types:
+      - completed
+    branches:
+      - main
 
 # Prevent concurrent publishing runs
 concurrency: ${{ github.workflow }}-${{ github.ref }}
@@ -12,6 +18,8 @@ jobs:
   publish:
     name: Publish to npm
     runs-on: ubuntu-latest
+    # Only run if tests passed (or if triggered by push and tests will run separately)
+    if: ${{ github.event_name == 'push' || github.event.workflow_run.conclusion == 'success' }}
     permissions:
       contents: write
       pull-requests: write
