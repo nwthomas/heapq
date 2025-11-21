@@ -1,6 +1,6 @@
 {
   "name": "@nwthomas/heapq",
-  "version": "0.0.2",
+  "version": "0.0.0-alpha.1",
   "description": "TypeScript implementation of Python's heapq module with functional heap operations",
   "type": "module",
   "main": "./lib/index.js",
@@ -34,7 +34,7 @@
     "test:watch": "bun test --watch",
     "changeset": "changeset",
     "version": "changeset version",
-    "release": "bun run build && changeset publish"
+    "release": "npm run build && changeset publish"
   },
   "devDependencies": {
     "@changesets/changelog-github": "0.5.1",

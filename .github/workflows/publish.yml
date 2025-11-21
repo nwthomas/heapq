@@ -36,6 +36,7 @@ jobs:
         with:
           node-version: "22"
           registry-url: "https://registry.npmjs.org"
+          always-auth: true
 
       - name: Install Bun
         uses: oven-sh/setup-bun@v1
@@ -50,6 +51,14 @@ jobs:
 
       - name: Build package
         run: bun run build
+
+      - name: Debug - Check OIDC token
+        run: |
+          if [ -n "$ACTIONS_ID_TOKEN_REQUEST_URL" ]; then
+            echo "✅ OIDC token request URL is available"
+          else
+            echo "❌ OIDC token request URL is NOT available"
+          fi
 
       - name: Create Release Pull Request or Publish
         id: changesets
