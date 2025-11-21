@@ -25,6 +25,7 @@ export function heappushpop<T>(heap: T[], value: T, cmp: Comparator<T> = default
     const returnValue = heap[0];
     heap[0] = value;
     siftDown(heap, 0, cmp);
+    
     return returnValue!;
   }
   

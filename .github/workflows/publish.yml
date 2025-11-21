@@ -1,9 +1,6 @@
 name: Publish to npm
 
 on:
-  push:
-    branches:
-      - main
   workflow_run:
     workflows: ["Tests"]
     types:
@@ -62,6 +59,4 @@ jobs:
           commit: "chore: version packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          # Enable npm provenance for better supply chain security
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # NPM uses OIDC token automatically with trusted publishing (see the 'id-token: write' permission)

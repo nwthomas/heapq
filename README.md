@@ -42,7 +42,7 @@ It can also be really nice to alias this package in your `package.json` file to 
 }
 ```
 
-## Use
+## Usage
 
 This library was specifically set up to mirror Python's excellent `heapq` standard library package.
 
@@ -73,12 +73,12 @@ console.log(heappop(minHeap)); // 1
 
 ## TypeScript Support
 
-Full TypeScript types are included out of the box - no need for `@types` packages!
+Full TypeScript types are included out of the box with no need for an extra `@types` package. Example:
 
 ```typescript
 import { heappush, type Comparator } from '@nwthomas/heapq';
 
-// Custom comparator for max-heap
+// Custom comparator for changing the min heap implementation to a max heap
 const maxHeapComparator: Comparator<number> = (a, b) => a > b;
 
 const maxHeap: number[] = [];
@@ -86,6 +86,7 @@ heappush(maxHeap, 1, maxHeapComparator);
 heappush(maxHeap, 5, maxHeapComparator);
 heappush(maxHeap, 3, maxHeapComparator);
 console.log(heappop(maxHeap, maxHeapComparator)); // 5
+console.log(heap); // [3, 1]
 ```
 
 ## Development Setup
