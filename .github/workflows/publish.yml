@@ -1,6 +1,9 @@
 name: Publish to npm
 
 on:
+  push:
+    branches:
+      - main
   workflow_run:
     workflows: ["Tests"]
     types:

@@ -1,13 +1,16 @@
 .PHONY: install build clean test
 
-install i:
-	bun install
-
 build:
 	bun run build
 
+changeset:
+	bun run changeset
+
 clean:
 	bun run clean
+
+install i:
+	bun install
 
 test:
 	bun run test
