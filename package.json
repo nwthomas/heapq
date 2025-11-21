@@ -1,6 +1,16 @@
 {
   "name": "@nwthomas/heapq",
   "module": "src/index.ts",
+  "types": "./lib/index.d.ts",
+  "main": "./lib/index.js",
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "clean": "del-cli ./lib",
+    "build": "bun run clean && tsc -p ./tsconfig.json",
+    "prepack": "bun run build"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },

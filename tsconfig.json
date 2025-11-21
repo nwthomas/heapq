@@ -5,6 +5,11 @@
     "target": "ESNext",
     "module": "Preserve",
     "moduleDetection": "force",
+    "outDir": "./lib/",
+    "declarationDir": "./lib/types",
+    "declaration": true,
+    "declarationMap": true,
+    "allowSyntheticDefaultImports": true,
     "jsx": "react-jsx",
     "allowJs": true,
 
