@@ -1,5 +1,11 @@
 # @nwthomas/heapq
 
+## 0.0.2
+
+### Patch Changes
+
+-   [`03d79fb`](https://github.com/nwthomas/heapq/commit/03d79fb7ccd1ef97601d09bbeac2c8b92ff4efcf) Thanks [@nwthomas](https://github.com/nwthomas)! - Update provenance to true for workflow publishing
+
 ## 0.0.1
 
 ### Patch Changes
