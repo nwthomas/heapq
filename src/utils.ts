@@ -17,21 +17,21 @@ export function getParentIndex(index: number): number {
 }
 
 export function siftDown<T>(heap: T[], index: number, cmp: Comparator<T>): void {
-    const n = heap.length;
+    const length = heap.length;
     const item = heap[index];
 
     while (true) {
         const left = getLeftChildIndex(index);
-        if (left >= n) break;
+        if (left >= length) break;
 
         let smallest = left;
         const right = getRightChildIndex(index);
 
-        if (right < n && cmp(heap[right]!, heap[left]!)) {
+        if (right < length && cmp(heap[right]!, heap[left]!)) {
             smallest = right;
         }
 
-        if (cmp(heap[smallest]!, item!)) break;
+        if (!cmp(heap[smallest]!, item!)) break;
 
         heap[index]! = heap[smallest]!;
         index = smallest;
@@ -48,11 +48,11 @@ export function siftUp<T>(heap: T[], index: number, cmp: Comparator<T>): void {
             break;
         }
 
-        swap(heap, index, parentIndex);
+        swapIndicesInPlace(heap, index, parentIndex);
         index = parentIndex;
     }
 }
 
-export function swap<T>(array: T[], indexOne: number, indexTwo: number): void {
+export function swapIndicesInPlace<T>(array: T[], indexOne: number, indexTwo: number): void {
     [array[indexOne]!, array[indexTwo]!] = [array[indexTwo]!, array[indexOne]!];
 }

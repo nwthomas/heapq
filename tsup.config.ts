@@ -2,8 +2,16 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig({
   // Entry points - compile all source files to preserve granular exports
-  entry: ['src/index.ts', 'src/heap.ts', 'src/types.ts', 'src/utils.ts'],
-
+  entry: [
+    'src/index.ts',
+    'src/heapify.ts',
+    'src/heapPop.ts',
+    'src/heapPush.ts',
+    'src/heapPushPop.ts',
+    'src/heapReplace.ts',
+    'src/types.ts',
+  ],
+  
   // Output format - ESM only (no CommonJS)
   format: ['esm'],
 
