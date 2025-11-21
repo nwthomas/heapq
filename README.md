@@ -1,2 +1,3 @@
-# heapish
-A TypeScript implementation of the Python heapq standard library module
+# Expansion Pack 🎮
+
+TypeScript implementations of various modules missing from JavaScript's standard library.
