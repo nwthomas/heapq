@@ -4,15 +4,15 @@ export function defaultComparator<T>(a: T, b: T): boolean {
     return a < b;
 }
 
-function getLeftChildIndex(index: number): number {
+export function getLeftChildIndex(index: number): number {
     return (index << 1) + 1;
 }
 
-function getRightChildIndex(index: number): number {
+export function getRightChildIndex(index: number): number {
     return (index << 1) + 2;
 }
 
-function getParentIndex(index: number): number {
+export function getParentIndex(index: number): number {
     return (index - 1) >> 1;
 }
 
