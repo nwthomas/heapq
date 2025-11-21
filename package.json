@@ -1,6 +1,6 @@
 {
   "name": "@nwthomas/heapq",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "TypeScript implementation of Python's heapq module with functional heap operations",
   "type": "module",
   "main": "./lib/index.js",
