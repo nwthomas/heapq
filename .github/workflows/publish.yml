@@ -28,7 +28,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          # Need full history for changesets
+          ref: main
           fetch-depth: 0
 
       - name: Set up Node.js
@@ -55,7 +55,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          # This creates a PR for version bumps, or publishes if one is merged
+          # This creates a PR for version bumps or publishes if one is merged
           version: bun run version
           publish: bun run release
           title: "chore: version packages"
