@@ -2,7 +2,7 @@
 
 A TypeScript implementation of the Python heapq module.
 
-To be honest, I just got tired of not having a great heap module in the JavaScript standard library, and all of the ones on npm haven't been touched in the better part of a decade.
+I got tired of not having a great heap module in the JavaScript standard library, and all of the ones on npm haven't been touched in the better part of a decade.
 
 ## Installation
 
@@ -51,14 +51,41 @@ As such, it uses functions to operate on a standard array instead of requiring i
 After installation, you can import and use it like this:
 
 ```typescript
-import heapq from "heapq";
+// Import all functions
+import { heappush, heappop, heapify } from '@nwthomas/heapq';
 
-const heap = [];
-heapq.heappush(heap, 10);
-heapq.heappush(heap, 1);
-heapq.heappush(heap, 5);
-console.log(heapq.heappop(heap)); // 1
-console.log(heap); // [1, 10, 5]
+const heap: number[] = [];
+heappush(heap, 10);
+heappush(heap, 1);
+heappush(heap, 5);
+console.log(heappop(heap)); // 1
+console.log(heap); // [5, 10]
+
+// Or use granular imports for better tree-shaking
+import { heappush, heappop } from '@nwthomas/heapq/heap';
+
+const minHeap: number[] = [];
+heappush(minHeap, 3);
+heappush(minHeap, 1);
+heappush(minHeap, 2);
+console.log(heappop(minHeap)); // 1
+```
+
+## TypeScript Support
+
+Full TypeScript types are included out of the box - no need for `@types` packages!
+
+```typescript
+import { heappush, type Comparator } from '@nwthomas/heapq';
+
+// Custom comparator for max-heap
+const maxHeapComparator: Comparator<number> = (a, b) => a > b;
+
+const maxHeap: number[] = [];
+heappush(maxHeap, 1, maxHeapComparator);
+heappush(maxHeap, 5, maxHeapComparator);
+heappush(maxHeap, 3, maxHeapComparator);
+console.log(heappop(maxHeap, maxHeapComparator)); // 5
 ```
 
 ## Development Setup

@@ -10,13 +10,18 @@ This is a TypeScript implementation of Python's heapq module, providing a min-he
 
 ### Development
 - `bun install` or `make install` - Install dependencies
-- `bun run build` or `make build` - Compile TypeScript to JavaScript in `lib/` directory
-- `bun run clean` or `make clean` - Remove compiled output
+- `bun run build` - Build package using tsup (ESM output in `lib/`)
+- `bun run dev` - Build in watch mode for development
+- `bun run clean` - Remove the `lib/` build output directory
 
 ### Testing
-- `bun run test` or `make test` - Run all Jest tests
-- `make test-watch` - Run tests in watch mode
-- `jest ./test/utils.test.ts` - Run a specific test file
+- `bun test` - Run all tests using Bun's test runner
+- `bun run test:watch` - Run tests in watch mode
+
+### Version Management & Publishing
+- `bun run changeset` - Create a new changeset (describe your changes for release)
+- `bun run version` - Bump versions and update changelogs (usually automated via CI)
+- `bun run release` - Build and publish to npm (usually automated via CI)
 
 ## Architecture
 
@@ -55,9 +60,51 @@ Contains the core heap algorithms:
 3. **Zero-based indexing**: Binary heap stored in array using standard index calculations
 4. **Custom comparators**: All operations support optional comparator for custom ordering (e.g., max-heap, priority queues)
 
+## Build System
+
+This project uses **tsup** (powered by esbuild) for building:
+- Compiles TypeScript to ESM-only JavaScript in `lib/`
+- Generates minified output for optimal bundle size
+- Creates TypeScript declaration files (`.d.ts`) for type support
+- Generates source maps for debugging
+- Supports tree-shaking for consuming applications
+
+### Package Exports
+
+The package provides granular exports for better tree-shaking:
+- `@nwthomas/heapq` - Main entry (all exports)
+- `@nwthomas/heapq/heap` - Just heap functions
+- `@nwthomas/heapq/types` - Just TypeScript types
+
+## Release Workflow
+
+This project uses **Changesets** for automated version management and publishing:
+
+### Creating a Release
+
+1. Make your code changes
+2. Run `bun run changeset` to describe your changes:
+   - Select version bump type (patch/minor/major following semver)
+   - Write a summary (used in CHANGELOG.md)
+3. Commit the changeset file (`.changeset/*.md`) with your code
+4. Push to `main` branch
+
+### Automated Publishing
+
+When code is pushed to `main`:
+1. GitHub Actions runs tests and builds the package
+2. If changesets are detected, a "Version Packages" PR is created/updated
+3. Merging the Version Packages PR triggers:
+   - Version bump in `package.json`
+   - `CHANGELOG.md` update with changeset summaries
+   - Automatic publish to npm
+   - GitHub release creation
+
+**Setup Required**: Add `NPM_TOKEN` to GitHub repository secrets for automated publishing.
+
 ## TypeScript Configuration
 
-- Target: ESNext with bundler module resolution
+- Target: ESNext with Bundler module resolution
 - Strict mode enabled with `noUncheckedIndexedAccess` and `noImplicitOverride`
 - Output: `lib/` directory with declaration files and source maps
-- `noEmit: true` in tsconfig but build script runs `tsc` to generate output
+- `noEmit: true` in tsconfig (tsup handles actual compilation)

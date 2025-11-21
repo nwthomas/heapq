@@ -3,34 +3,35 @@
     // Environment setup & latest features
     "lib": ["ESNext"],
     "target": "ESNext",
-    "module": "Preserve",
+    "module": "ESNext",
     "moduleDetection": "force",
+
+    // Output configuration (tsup handles actual build, but this helps IDEs)
     "outDir": "./lib/",
-    "declarationDir": "./lib/types",
     "declaration": true,
     "declarationMap": true,
+    "sourceMap": true,
+
+    // Module resolution for modern ESM
+    "moduleResolution": "Bundler",
     "allowSyntheticDefaultImports": true,
-    "jsx": "react-jsx",
-    "allowJs": true,
-
-    // Bundler mode
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
+    "esModuleInterop": true,
     "verbatimModuleSyntax": true,
-    "noEmit": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
 
-    // Best practices
+    // Type checking - strict mode with additional safety
     "strict": true,
     "skipLibCheck": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
+    "forceConsistentCasingInFileNames": true,
 
-    // Some stricter flags (disabled by default)
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noPropertyAccessFromIndexSignature": false
+    // Allow Bun's test files to import .ts extensions
+    "allowImportingTsExtensions": true,
+    "noEmit": true
   },
   "include": ["./src/**/*", "./test/**/*"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "lib"]
 }

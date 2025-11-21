@@ -13,4 +13,4 @@ test:
 	bun run test
 
 test-watch:
-	bun run test --watch
+	bun run test:watch
