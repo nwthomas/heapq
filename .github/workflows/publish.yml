@@ -65,8 +65,8 @@ jobs:
         uses: changesets/action@v1
         with:
           # This creates a PR for version bumps or publishes if one is merged
-          version: bun run version
-          publish: bun run release
+          version: npm run version
+          publish: npm run release
           title: "chore: version packages"
           commit: "chore: version packages"
         env:
