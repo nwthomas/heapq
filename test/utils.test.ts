@@ -52,6 +52,5 @@ describe('utils', () => {
     it("should return the parent index for a deeply-nested right child", () => {
       expect(getParentIndex(10)).toBe(4);
     });
-    
   });
 });

@@ -62,4 +62,5 @@ jobs:
           commit: "chore: version packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
           # NPM uses OIDC token automatically with trusted publishing (see the 'id-token: write' permission)
