@@ -1,4 +1,4 @@
-import { defaultComparator, getLeftChildIndex, getParentIndex, getRightChildIndex } from '../src/utils';
+import { defaultComparator, getLeftChildIndex, getParentIndex, getRightChildIndex, siftDown, siftUp, swap } from '../src/utils';
 import { describe, expect, it } from 'bun:test';
 
 describe('utils', () => {
@@ -62,6 +62,22 @@ describe('utils', () => {
     it("should return the parent index for a deeply-nested right child", () => {
       const result = getParentIndex(10);
       expect(result).toBe(4);
+    });
+  });
+
+  describe('siftDown', () => {
+    // it("should sift down the root element of the heap", () => {
+    //   const heap = [3, 1, 2];
+    //   siftDown(heap, 0, defaultComparator);
+    //   expect(heap).toEqual([1, 3, 2]);
+    // });
+  });
+
+  describe("swap", () => {
+    it("should mutate in place and swap two elements in an array", () => {
+      const array = [1, 2, 3];
+      swap(array, 0, 2);
+      expect(array).toEqual([3, 2, 1]);
     });
   });
 });
