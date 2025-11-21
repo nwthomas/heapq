@@ -1,5 +1,11 @@
 # @nwthomas/heapq
 
+## 0.0.0
+
+### Patch Changes
+
+-   [`21a513f`](https://github.com/nwthomas/heapq/commit/21a513f648ac12f3ab4c0040f4421840f7f501b4) Thanks [@nwthomas](https://github.com/nwthomas)! - Move to npm build
+
 ## 0.0.2
 
 ### Patch Changes
