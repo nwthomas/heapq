@@ -1,5 +1,11 @@
 # @nwthomas/heapq
 
+## 0.0.3
+
+### Patch Changes
+
+- [`83920d4`](https://github.com/nwthomas/heapq/commit/83920d483e5c4eb5c92fe711d7bd4076b93a2956) Thanks [@nwthomas](https://github.com/nwthomas)! - Update main import for CJS
+
 ## 0.0.2
 
 ### Patch Changes
