@@ -36,9 +36,9 @@ It can also be really nice to alias this package in your `package.json` file to 
 
 ```json
 {
-  "dependencies": {
-    "heapq": "npm:@nwthomas/heapq@<version_here>"
-  }
+    "dependencies": {
+        "heapq": "npm:@nwthomas/heapq@<version_here>"
+    }
 }
 ```
 
@@ -52,7 +52,7 @@ After installation, you can import and use it like this:
 
 ```typescript
 // Import all functions
-import { heapPush, heapPop, heapify } from '@nwthomas/heapq';
+import { heapPush, heapPop, heapify } from "@nwthomas/heapq";
 
 const heap: number[] = [];
 heapPush(heap, 10);
@@ -62,7 +62,7 @@ console.log(heapPop(heap)); // 1
 console.log(heap); // [5, 10]
 
 // Or use granular imports for better tree-shaking
-import { heapPush, heapPop } from '@nwthomas/heapq/heap';
+import { heapPush, heapPop } from "@nwthomas/heapq/heap";
 
 const minHeap: number[] = [];
 heapPush(minHeap, 3);
@@ -76,7 +76,7 @@ console.log(heapPop(minHeap)); // 1
 Full TypeScript types are included out of the box with no need for an extra `@types` package. Example:
 
 ```typescript
-import { heapPush, type Comparator } from '@nwthomas/heapq';
+import { heapPush, type Comparator } from "@nwthomas/heapq";
 
 // Custom comparator for changing the min heap implementation to a max heap
 const maxHeapComparator: Comparator<number> = (a, b) => a > b;

@@ -9,6 +9,9 @@ changeset:
 clean:
 	bun run clean
 
+dev:
+	bun run dev
+
 format:
 	bun run format
 

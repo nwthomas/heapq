@@ -1,37 +1,37 @@
 {
-  "compilerOptions": {
-    // Environment setup & latest features
-    "lib": ["ESNext"],
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleDetection": "force",
+    "compilerOptions": {
+        // Environment setup & latest features
+        "lib": ["ESNext"],
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleDetection": "force",
 
-    // Output configuration (tsup handles actual build, but this helps IDEs)
-    "outDir": "./lib/",
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
+        // Output configuration (tsup handles actual build, but this helps IDEs)
+        "outDir": "./lib/",
+        "declaration": true,
+        "declarationMap": true,
+        "sourceMap": true,
 
-    // Module resolution for modern ESM
-    "moduleResolution": "Bundler",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "verbatimModuleSyntax": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
+        // Module resolution for modern ESM
+        "moduleResolution": "Bundler",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "verbatimModuleSyntax": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
 
-    // Type checking - strict mode with additional safety
-    "strict": true,
-    "skipLibCheck": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true,
-    "forceConsistentCasingInFileNames": true,
+        // Type checking - strict mode with additional safety
+        "strict": true,
+        "skipLibCheck": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUncheckedIndexedAccess": true,
+        "noImplicitOverride": true,
+        "forceConsistentCasingInFileNames": true,
 
-    // Allow Bun's test files to import .ts extensions
-    "allowImportingTsExtensions": true,
-    "noEmit": true
-  },
-  "include": ["./src/**/*", "./test/**/*"],
-  "exclude": ["node_modules", "lib"]
+        // Allow Bun's test files to import .ts extensions
+        "allowImportingTsExtensions": true,
+        "noEmit": true
+    },
+    "include": ["./src/**/*", "./test/**/*"],
+    "exclude": ["node_modules", "lib"]
 }

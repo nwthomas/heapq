@@ -1,89 +1,89 @@
 {
-  "name": "@nwthomas/heapq",
-  "version": "0.0.0",
-  "description": "TypeScript implementation of Python's heapq module with functional heap operations",
-  "type": "module",
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./lib/index.d.ts",
-      "import": "./lib/index.js"
+    "name": "@nwthomas/heapq",
+    "version": "0.0.0",
+    "description": "TypeScript implementation of Python's heapq module with functional heap operations",
+    "type": "module",
+    "main": "./lib/index.js",
+    "types": "./lib/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./lib/index.d.ts",
+            "import": "./lib/index.js"
+        },
+        "./heapify": {
+            "types": "./lib/heapify.d.ts",
+            "import": "./lib/heapify.js"
+        },
+        "./heapPop": {
+            "types": "./lib/heapPop.d.ts",
+            "import": "./lib/heapPop.js"
+        },
+        "./heapPush": {
+            "types": "./lib/heapPush.d.ts",
+            "import": "./lib/heapPush.js"
+        },
+        "./heapPushPop": {
+            "types": "./lib/heapPushPop.d.ts",
+            "import": "./lib/heapPushPop.js"
+        },
+        "./heapReplace": {
+            "types": "./lib/heapReplace.d.ts",
+            "import": "./lib/heapReplace.js"
+        },
+        "./types": {
+            "types": "./lib/types.d.ts",
+            "import": "./lib/types.js"
+        }
     },
-    "./heapify": {
-      "types": "./lib/heapify.d.ts",
-      "import": "./lib/heapify.js"
+    "files": [
+        "lib/**/*",
+        "README.md",
+        "LICENSE"
+    ],
+    "sideEffects": false,
+    "scripts": {
+        "clean": "del-cli ./lib",
+        "build": "tsup",
+        "dev": "tsup --watch",
+        "prepack": "bun run build",
+        "test": "bun test",
+        "test:watch": "bun test --watch",
+        "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+        "format:check": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\"",
+        "changeset": "changeset",
+        "version": "changeset version",
+        "release": "npm run build && changeset publish"
     },
-    "./heapPop": {
-      "types": "./lib/heapPop.d.ts",
-      "import": "./lib/heapPop.js"
+    "devDependencies": {
+        "@changesets/changelog-github": "0.5.1",
+        "@changesets/cli": "2.29.7",
+        "@types/bun": "1.3.2",
+        "@types/node": "24.10.1",
+        "del-cli": "7.0.0",
+        "prettier": "3.6.2",
+        "tsup": "8.5.1"
     },
-    "./heapPush": {
-      "types": "./lib/heapPush.d.ts",
-      "import": "./lib/heapPush.js"
+    "peerDependencies": {
+        "typescript": "^5"
     },
-    "./heapPushPop": {
-      "types": "./lib/heapPushPop.d.ts",
-      "import": "./lib/heapPushPop.js"
+    "keywords": [
+        "algorithm",
+        "binary-heap",
+        "data-structure",
+        "heap",
+        "heapq",
+        "max-heap",
+        "min-heap",
+        "priority-queue",
+        "typescript"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nwthomas/heapq.git"
     },
-    "./heapReplace": {
-      "types": "./lib/heapReplace.d.ts",
-      "import": "./lib/heapReplace.js"
+    "bugs": {
+        "url": "https://github.com/nwthomas/heapq/issues"
     },
-    "./types": {
-      "types": "./lib/types.d.ts",
-      "import": "./lib/types.js"
-    }
-  },
-  "files": [
-    "lib/**/*",
-    "README.md",
-    "LICENSE"
-  ],
-  "sideEffects": false,
-  "scripts": {
-    "clean": "del-cli ./lib",
-    "build": "tsup",
-    "dev": "tsup --watch",
-    "prepack": "bun run build",
-    "test": "bun test",
-    "test:watch": "bun test --watch",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "format:check": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\"",
-    "changeset": "changeset",
-    "version": "changeset version",
-    "release": "npm run build && changeset publish"
-  },
-  "devDependencies": {
-    "@changesets/changelog-github": "0.5.1",
-    "@changesets/cli": "2.29.7",
-    "@types/bun": "1.3.2",
-    "@types/node": "24.10.1",
-    "del-cli": "7.0.0",
-    "prettier": "3.6.2",
-    "tsup": "8.5.1"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
-  },
-  "keywords": [
-    "algorithm",
-    "binary-heap",
-    "data-structure",
-    "heap",
-    "heapq",
-    "max-heap",
-    "min-heap",
-    "priority-queue",
-    "typescript"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nwthomas/heapq.git"
-  },
-  "bugs": {
-    "url": "https://github.com/nwthomas/heapq/issues"
-  },
-  "author": "Nathan Thomas",
-  "license": "MIT"
+    "author": "Nathan Thomas",
+    "license": "MIT"
 }
