@@ -8,31 +8,38 @@
     "exports": {
         ".": {
             "types": "./lib/index.d.ts",
-            "import": "./lib/index.js"
+            "import": "./lib/index.js",
+            "require": "./lib/index.cjs"
         },
         "./heapify": {
             "types": "./lib/heapify.d.ts",
-            "import": "./lib/heapify.js"
+            "import": "./lib/heapify.js",
+            "require": "./lib/heapify.cjs"
         },
         "./heapPop": {
             "types": "./lib/heapPop.d.ts",
-            "import": "./lib/heapPop.js"
+            "import": "./lib/heapPop.js",
+            "require": "./lib/heapPop.cjs"
         },
         "./heapPush": {
             "types": "./lib/heapPush.d.ts",
-            "import": "./lib/heapPush.js"
+            "import": "./lib/heapPush.js",
+            "require": "./lib/heapPush.cjs"
         },
         "./heapPushPop": {
             "types": "./lib/heapPushPop.d.ts",
-            "import": "./lib/heapPushPop.js"
+            "import": "./lib/heapPushPop.js",
+            "require": "./lib/heapPushPop.cjs"
         },
         "./heapReplace": {
             "types": "./lib/heapReplace.d.ts",
-            "import": "./lib/heapReplace.js"
+            "import": "./lib/heapReplace.js",
+            "require": "./lib/heapReplace.cjs"
         },
         "./types": {
             "types": "./lib/types.d.ts",
-            "import": "./lib/types.js"
+            "import": "./lib/types.js",
+            "require": "./lib/types.cjs"
         }
     },
     "files": [

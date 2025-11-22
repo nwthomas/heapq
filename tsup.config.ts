@@ -12,8 +12,8 @@ export default defineConfig({
     'src/types.ts',
   ],
   
-  // Output format - ESM only (no CommonJS)
-  format: ['esm'],
+  // Output format - Both ESM and CommonJS
+  format: ['esm', 'cjs'],
 
   // Output directory
   outDir: 'lib',
