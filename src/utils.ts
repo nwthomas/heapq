@@ -1,4 +1,4 @@
-import type { Comparator } from './types';
+import type { Comparator } from "./types";
 
 export function _defaultComparator<T>(a: T, b: T): boolean {
     return a < b;
@@ -16,7 +16,11 @@ export function _getParentIndex(index: number): number {
     return (index - 1) >> 1;
 }
 
-export function _siftDown<T>(heap: T[], index: number, cmp: Comparator<T>): void {
+export function _siftDown<T>(
+    heap: T[],
+    index: number,
+    cmp: Comparator<T>,
+): void {
     const length = heap.length;
     const value = heap[index];
 
@@ -25,7 +29,7 @@ export function _siftDown<T>(heap: T[], index: number, cmp: Comparator<T>): void
         if (left >= length) {
             break;
         }
-        
+
         let smallest = left;
         const right = _getRightChildIndex(index);
 
@@ -57,6 +61,10 @@ export function _siftUp<T>(heap: T[], index: number, cmp: Comparator<T>): void {
     }
 }
 
-export function _swapIndicesInPlace<T>(heap: T[], indexOne: number, indexTwo: number): void {
+export function _swapIndicesInPlace<T>(
+    heap: T[],
+    indexOne: number,
+    indexTwo: number,
+): void {
     [heap[indexOne]!, heap[indexTwo]!] = [heap[indexTwo]!, heap[indexOne]!];
 }

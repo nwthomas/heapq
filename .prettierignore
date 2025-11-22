@@ -1,0 +1,13 @@
+# Build output
+lib/
+node_modules/
+dist/
+
+# Lock files
+bun.lock
+package-lock.json
+yarn.lock
+
+# Misc
+.changeset/
+CHANGELOG.md

@@ -9,6 +9,12 @@ changeset:
 clean:
 	bun run clean
 
+format:
+	bun run format
+
+format-check:
+	bun run format:check
+
 install i:
 	bun install
 
