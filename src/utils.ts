@@ -1,58 +1,62 @@
 import type { Comparator } from './types';
 
-export function defaultComparator<T>(a: T, b: T): boolean {
+export function _defaultComparator<T>(a: T, b: T): boolean {
     return a < b;
 }
 
-export function getLeftChildIndex(index: number): number {
+export function _getLeftChildIndex(index: number): number {
     return (index << 1) + 1;
 }
 
-export function getRightChildIndex(index: number): number {
+export function _getRightChildIndex(index: number): number {
     return (index << 1) + 2;
 }
 
-export function getParentIndex(index: number): number {
+export function _getParentIndex(index: number): number {
     return (index - 1) >> 1;
 }
 
-export function siftDown<T>(heap: T[], index: number, cmp: Comparator<T>): void {
+export function _siftDown<T>(heap: T[], index: number, cmp: Comparator<T>): void {
     const length = heap.length;
-    const item = heap[index];
+    const value = heap[index];
 
     while (true) {
-        const left = getLeftChildIndex(index);
-        if (left >= length) break;
-
+        const left = _getLeftChildIndex(index);
+        if (left >= length) {
+            break;
+        }
+        
         let smallest = left;
-        const right = getRightChildIndex(index);
+        const right = _getRightChildIndex(index);
 
         if (right < length && cmp(heap[right]!, heap[left]!)) {
             smallest = right;
         }
 
-        if (!cmp(heap[smallest]!, item!)) break;
+        if (!cmp(heap[smallest]!, value!)) {
+            break;
+        }
 
         heap[index]! = heap[smallest]!;
         index = smallest;
     }
 
-    heap[index]! = item!;
+    heap[index]! = value!;
 }
 
-export function siftUp<T>(heap: T[], index: number, cmp: Comparator<T>): void {
+export function _siftUp<T>(heap: T[], index: number, cmp: Comparator<T>): void {
     while (index > 0) {
-        const parentIndex = getParentIndex(index);
+        const parentIndex = _getParentIndex(index);
 
         if (cmp(heap[parentIndex]!, heap[index]!)) {
             break;
         }
 
-        swapIndicesInPlace(heap, index, parentIndex);
+        _swapIndicesInPlace(heap, index, parentIndex);
         index = parentIndex;
     }
 }
 
-export function swapIndicesInPlace<T>(array: T[], indexOne: number, indexTwo: number): void {
-    [array[indexOne]!, array[indexTwo]!] = [array[indexTwo]!, array[indexOne]!];
+export function _swapIndicesInPlace<T>(heap: T[], indexOne: number, indexTwo: number): void {
+    [heap[indexOne]!, heap[indexTwo]!] = [heap[indexTwo]!, heap[indexOne]!];
 }

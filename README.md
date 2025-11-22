@@ -52,23 +52,23 @@ After installation, you can import and use it like this:
 
 ```typescript
 // Import all functions
-import { heappush, heappop, heapify } from '@nwthomas/heapq';
+import { heapPush, heapPop, heapify } from '@nwthomas/heapq';
 
 const heap: number[] = [];
-heappush(heap, 10);
-heappush(heap, 1);
-heappush(heap, 5);
-console.log(heappop(heap)); // 1
+heapPush(heap, 10);
+heapPush(heap, 1);
+heapPush(heap, 5);
+console.log(heapPop(heap)); // 1
 console.log(heap); // [5, 10]
 
 // Or use granular imports for better tree-shaking
-import { heappush, heappop } from '@nwthomas/heapq/heap';
+import { heapPush, heapPop } from '@nwthomas/heapq/heap';
 
 const minHeap: number[] = [];
-heappush(minHeap, 3);
-heappush(minHeap, 1);
-heappush(minHeap, 2);
-console.log(heappop(minHeap)); // 1
+heapPush(minHeap, 3);
+heapPush(minHeap, 1);
+heapPush(minHeap, 2);
+console.log(heapPop(minHeap)); // 1
 ```
 
 ## TypeScript Support
@@ -76,16 +76,16 @@ console.log(heappop(minHeap)); // 1
 Full TypeScript types are included out of the box with no need for an extra `@types` package. Example:
 
 ```typescript
-import { heappush, type Comparator } from '@nwthomas/heapq';
+import { heapPush, type Comparator } from '@nwthomas/heapq';
 
 // Custom comparator for changing the min heap implementation to a max heap
 const maxHeapComparator: Comparator<number> = (a, b) => a > b;
 
 const maxHeap: number[] = [];
-heappush(maxHeap, 1, maxHeapComparator);
-heappush(maxHeap, 5, maxHeapComparator);
-heappush(maxHeap, 3, maxHeapComparator);
-console.log(heappop(maxHeap, maxHeapComparator)); // 5
+heapPush(maxHeap, 1, maxHeapComparator);
+heapPush(maxHeap, 5, maxHeapComparator);
+heapPush(maxHeap, 3, maxHeapComparator);
+console.log(heapPop(maxHeap, maxHeapComparator)); // 5
 console.log(heap); // [3, 1]
 ```
 
