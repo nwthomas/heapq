@@ -1,7 +1,13 @@
 {
     "name": "@nwthomas/heapq",
-    "version": "0.0.3",
     "description": "TypeScript implementation of Python's heapq module with functional heap operations",
+    "version": "0.0.3",
+    "author": "Nathan Thomas",
+    "license": "GPL-3.0-only",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nwthomas/heapq.git"
+    },
     "type": "module",
     "main": "./lib/index.cjs",
     "module": "./lib/index.js",
@@ -85,16 +91,10 @@
         "priority-queue",
         "typescript"
     ],
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/nwthomas/heapq.git"
-    },
     "publishConfig": {
         "access": "public"
     },
     "bugs": {
         "url": "https://github.com/nwthomas/heapq/issues"
-    },
-    "author": "Nathan Thomas",
-    "license": "MIT"
+    }
 }
