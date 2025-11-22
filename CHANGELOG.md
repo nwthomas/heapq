@@ -1,5 +1,11 @@
 # @nwthomas/heapq
 
+## 0.0.4
+
+### Patch Changes
+
+- [`f1fc3ad`](https://github.com/nwthomas/heapq/commit/f1fc3ad132f2a312a4158b839031afce7da1c1aa) Thanks [@nwthomas](https://github.com/nwthomas)! - Add publishConfig field to package.json
+
 ## 0.0.3
 
 ### Patch Changes
