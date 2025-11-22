@@ -1,5 +1,11 @@
 # @nwthomas/heapq
 
+## 0.0.2
+
+### Patch Changes
+
+- [`608a5b6`](https://github.com/nwthomas/heapq/commit/608a5b6c86433f2790f758a220c7ed805f46d00e) Thanks [@nwthomas](https://github.com/nwthomas)! - Update to support CommonJS and ESM
+
 ## 0.0.1
 
 ### Patch Changes
