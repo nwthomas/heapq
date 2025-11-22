@@ -52,14 +52,6 @@ jobs:
       - name: Build package
         run: bun run build
 
-      - name: Debug - Check OIDC token
-        run: |
-          if [ -n "$ACTIONS_ID_TOKEN_REQUEST_URL" ]; then
-            echo "✅ OIDC token request URL is available"
-          else
-            echo "❌ OIDC token request URL is NOT available"
-          fi
-
       - name: Create Release Pull Request or Publish
         id: changesets
         uses: changesets/action@v1
@@ -71,5 +63,5 @@ jobs:
           commit: "chore: version packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_CONFIG_PROVENANCE: true
           # NPM uses OIDC token automatically with trusted publishing (see the 'id-token: write' permission)
+          NPM_CONFIG_PROVENANCE: true
