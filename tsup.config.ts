@@ -9,6 +9,7 @@ export default defineConfig({
     'src/heapPush.ts',
     'src/heapPushPop.ts',
     'src/heapReplace.ts',
+    'src/merge.ts',
     'src/types.ts',
   ],
   

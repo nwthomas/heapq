@@ -170,6 +170,26 @@ console.log(result); // 3
 console.log(heap); // [4, 2, 1]
 ```
 
+### merge
+
+The `merge` function takes in an arbitrary amount of heaps and, optionally, a comparator function. It returns an iterator that can be called to progressively return ordered values from all heaps.
+
+```typescript
+const result = Array.from(merge([1, 3, 5, 7], [2, 4, 6, 8]));
+console.log(result); // [1, 2, 3, 4, 5, 6, 7, 8]
+```
+
+The default is to sort values using min heap logic. A custom comparator function can be included to perform max heap comparisons or to operate on more complex data types.
+
+> IMPORTANT: The comparator function, if included, _must_ be the final argument in the function call or else the function will throw an error.
+
+```typescript
+const result = Array.from(merge([7, 5, 3, 1], [8, 6, 4, 2], (a, b) => a > b));
+console.log(result); // [8, 7, 6, 5, 4, 3, 2, 1]
+```
+
+It's also assumed that the iterables included to be merged are already sorted appropriately according to the heap logic you're using.
+
 ## TypeScript Support
 
 Full TypeScript types are included out of the box with no need for an extra `@types` package. Example:

@@ -43,6 +43,11 @@
             "import": "./lib/heapReplace.js",
             "require": "./lib/heapReplace.cjs"
         },
+        "./merge": {
+            "types": "./lib/merge.d.ts",
+            "import": "./lib/merge.js",
+            "require": "./lib/merge.cjs"
+        },
         "./types": {
             "types": "./lib/types.d.ts",
             "import": "./lib/types.js",
