@@ -4,9 +4,9 @@ import { heapPushPop } from "../src/heapPushPop";
 
 describe(heapPushPop.name, () => {
     it("should push and pop the root element of a min heap", () => {
-        const heap = [3, 1, 2];
+        const heap = [1, 3, 2];
         const result = heapPushPop(heap, 4);
-        expect(result).toBe(3);
+        expect(result).toBe(1);
     });
 
     it("should return pushed value when root element is less than pushed value for min heap", () => {

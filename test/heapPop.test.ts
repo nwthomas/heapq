@@ -4,10 +4,10 @@ import { heapPop } from "../src/heapPop";
 
 describe(heapPop.name, () => {
     it("should pop the root element of the hea and return it and sift up values for min heap", () => {
-        const heap = [3, 1, 2];
+        const heap = [1, 3, 2];
         const result = heapPop(heap);
-        expect(result).toBe(3);
-        expect(heap).toEqual([1, 2]);
+        expect(result).toBe(1);
+        expect(heap).toEqual([2, 3]);
     });
 
     it("should return undefined when used on an empty array", () => {
