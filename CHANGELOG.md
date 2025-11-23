@@ -1,5 +1,11 @@
 # @nwthomas/heapq
 
+## 0.0.5
+
+### Patch Changes
+
+- [`4565089`](https://github.com/nwthomas/heapq/commit/4565089a730817cc1b30261493eed098dc483d7d) Thanks [@nwthomas](https://github.com/nwthomas)! - Add merge function to codebase for merging arbitrary iterable heaps together
+
 ## 0.0.4
 
 ### Patch Changes
