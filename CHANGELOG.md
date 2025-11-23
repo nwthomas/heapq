@@ -1,5 +1,11 @@
 # @nwthomas/heapq
 
+## 0.0.4
+
+### Patch Changes
+
+- [`09b3329`](https://github.com/nwthomas/heapq/commit/09b33296b7d9ddf36035d8121da1f0f2db85f597) Thanks [@nwthomas](https://github.com/nwthomas)! - Various test updates and push new README to npm
+
 ## 0.0.3
 
 ### Patch Changes
