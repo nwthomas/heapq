@@ -1,5 +1,11 @@
 # @nwthomas/heapq
 
+## 0.2.0
+
+### Minor Changes
+
+- [`a4dc009`](https://github.com/nwthomas/heapq/commit/a4dc00934da031944f2f4d110c4f4df9fd16b336) Thanks [@nwthomas](https://github.com/nwthomas)! - Update all functions to accept an options object for cmp
+
 ## 0.1.0
 
 ### Minor Changes
