@@ -10,33 +10,15 @@ type HeapEntry<T> = {
     iterator: Iterator<T>;
 };
 
+type MergeOptions<T> = {
+    comparator?: Comparator<T>;
+};
+
 export function* merge<T>(
-    ...args: Array<Iterable<T> | Comparator<T>>
+    iterables: Iterable<T>[],
+    options?: MergeOptions<T>,
 ): Generator<T, void, undefined> {
-    let cmp: Comparator<T> = _defaultComparator<T>;
-    let iterables: Iterable<T>[] = args as Iterable<T>[];
-
-    for (let i = 0; i < args.length - 1; i++) {
-        const arg = args[i];
-        if (
-            typeof arg === "function" &&
-            !arg[Symbol.iterator as keyof typeof arg]
-        ) {
-            throw new Error("Comparator function must be the last argument");
-        }
-    }
-
-    if (args.length > 0 && typeof args[args.length - 1] === "function") {
-        const lastArg = args[args.length - 1];
-        if (
-            typeof lastArg === "function" &&
-            !lastArg[Symbol.iterator as keyof typeof lastArg]
-        ) {
-            cmp = lastArg as Comparator<T>;
-            iterables = args.slice(0, -1) as Iterable<T>[];
-        }
-    }
-
+    const cmp: Comparator<T> = options?.comparator ?? _defaultComparator<T>;
     const heap: HeapEntry<T>[] = [];
 
     for (let sourceIndex = 0; sourceIndex < iterables.length; sourceIndex++) {
