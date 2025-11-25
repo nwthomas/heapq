@@ -18,7 +18,7 @@ describe(heapPop.name, () => {
 
     it("should pop the root element of the heap with a custom comparator for max heap", () => {
         const heap = [3, 1, 2];
-        const result = heapPop(heap, (a, b) => a > b);
+        const result = heapPop(heap, { comparator: (a, b) => a > b });
         expect(result).toBe(3);
         expect(heap).toEqual([2, 1]);
     });

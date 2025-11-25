@@ -25,14 +25,14 @@ describe(heapPushPop.name, () => {
 
     it("should return root value when root element is greater than pushed value for max heap", () => {
         const heap = [20, 5, 10];
-        const result = heapPushPop(heap, 12, (a, b) => a > b);
+        const result = heapPushPop(heap, 12, { comparator: (a, b) => a > b });
         expect(result).toBe(20);
         expect(heap).toEqual([12, 5, 10]);
     });
 
     it("should return pushed value when root element is greater than pushed value for max heap", () => {
         const heap = [20, 5, 10];
-        const result = heapPushPop(heap, 21, (a, b) => a > b);
+        const result = heapPushPop(heap, 21, { comparator: (a, b) => a > b });
         expect(result).toBe(21);
         expect(heap).toEqual([20, 5, 10]);
     });

@@ -1,12 +1,14 @@
 import { _defaultComparator, _siftDown } from "./utils";
 
-import type { Comparator } from "./types";
+import type { Options } from "./types";
 
 export function heapPushPop<T>(
     heap: T[],
     value: T,
-    cmp: Comparator<T> = _defaultComparator<T>,
+    options?: Options<T>,
 ): T | void {
+    const cmp = options?.comparator ?? _defaultComparator<T>;
+
     if (heap.length > 0 && cmp(heap[0]!, value)) {
         const returnValue = heap[0];
         heap[0] = value;

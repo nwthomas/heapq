@@ -62,13 +62,13 @@ heap = heapify(heap);
 console.log(heap); // [1, 3, 2, 4, 5, 6, 7, 8, 9, 10]
 ```
 
-A custom comparator function can be provided to perform max heap comparisons or to operate on more complex data types:
+A custom `comparator` function can be provided in an `options` object to perform max heap comparisons or to operate on more complex data types:
 
 ```typescript
 import { heapify } from "@nwthomas/heapq/heapify";
 
 let heap = [3, 1, 2, 4, 5, 6, 7, 8, 9, 10];
-heap = heapify(heap, (a, b) => a > b);
+heap = heapify(heap, { comparator: (a, b) => a > b });
 console.log(heap); // [10, 9, 7, 8, 5, 6, 2, 3, 4, 1]
 ```
 
@@ -85,13 +85,13 @@ console.log(result); // 1
 console.log(heap); // [2, 3]
 ```
 
-A custom comparator function can be provided to perform max heap comparisons or to operate on more complex data types:
+A custom `comparator` function can be provided in an `options` object to perform max heap comparisons or to operate on more complex data types:
 
 ```typescript
 import { heapPop } from "@nwthomas/heapq/heapPop";
 
 const heap = [3, 1, 2];
-const result = heapPop(heap, (a, b) => a > b);
+const result = heapPop(heap, { comparator: (a, b) => a > b });
 console.log(result); // 3
 console.log(heap); // [2, 1]
 ```
@@ -109,13 +109,13 @@ heap = heapPush(heap, 4);
 console.log(heap); // [1, 3, 2, 4]
 ```
 
-A custom comparator function can be provided to perform max heap comparisons or to operate on more complex data types:
+A custom `comparator` function can be provided in an `options` object to perform max heap comparisons or to operate on more complex data types:
 
 ```typescript
 import { heapPush } from "@nwthomas/heapq/heapPush";
 
 let heap = [3, 1, 2];
-heap = heapPush(heap, 4, (a, b) => a > b);
+heap = heapPush(heap, 4, { comparator: (a, b) => a > b });
 console.log(heap); // [4, 3, 2, 1]
 ```
 
@@ -141,13 +141,13 @@ console.log(heap); // [2, 3, 4]
 
 Unlike `heapReplace` (see further below), this will possibly return the new value as it's first pushed to the heap and then a value is popped off and returned.
 
-A custom comparator function can be provided to perform max heap comparisons or to operate on more complex data types:
+A custom `comparator` function can be provided in an `options` object to perform max heap comparisons or to operate on more complex data types:
 
 ```typescript
 import { heapPushPop } from "@nwthomas/heapq/heapPushPop";
 
 const heap = [20, 5, 10];
-const result = heapPushPop(heap, 4, (a, b) => a > b);
+const result = heapPushPop(heap, 4, { comparator: (a, b) => a > b });
 console.log(result); // 20
 console.log(heap); // [10, 5, 4]
 ```
@@ -167,13 +167,13 @@ console.log(heap); // [2, 3, 4]
 
 Unlike `heapPushPop` (see further above), this will always return the _previous_ root value and then push the new one to the heap.
 
-A custom comparator function can be provided to perform max heap comparisons or to operate on more complex data types:
+A custom `comparator` function can be provided in an `options` object to perform max heap comparisons or to operate on more complex data types:
 
 ```typescript
 import { heapReplace } from "@nwthomas/heapq/heapReplace";
 
 const heap = [3, 2, 1];
-const result = heapReplace(heap, 4, (a, b) => a > b);
+const result = heapReplace(heap, 4, { comparator: (a, b) => a > b });
 console.log(result); // 3
 console.log(heap); // [4, 2, 1]
 ```

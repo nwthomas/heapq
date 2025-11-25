@@ -11,7 +11,7 @@ describe(heapPush.name, () => {
 
     it("should push a value to a max heap using a custom comparator for heap ordering", () => {
         let heap = [3, 1, 2];
-        heap = heapPush(heap, 4, (a, b) => a > b);
+        heap = heapPush(heap, 4, { comparator: (a, b) => a > b });
         expect(heap).toEqual([4, 3, 2, 1]);
     });
 

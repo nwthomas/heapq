@@ -2,7 +2,7 @@ import { heapPop } from "./heapPop";
 import { heapify } from "./heapify";
 import { _defaultComparator } from "./utils";
 
-import type { Comparator } from "./types";
+import type { Options } from "./types";
 
 type HeapEntry<T> = {
     value: T;
@@ -10,15 +10,11 @@ type HeapEntry<T> = {
     iterator: Iterator<T>;
 };
 
-type MergeOptions<T> = {
-    comparator?: Comparator<T>;
-};
-
 export function* merge<T>(
     iterables: Iterable<T>[],
-    options?: MergeOptions<T>,
+    options?: Options<T>,
 ): Generator<T, void, undefined> {
-    const cmp: Comparator<T> = options?.comparator ?? _defaultComparator<T>;
+    const cmp = options?.comparator ?? _defaultComparator<T>;
     const heap: HeapEntry<T>[] = [];
 
     for (let sourceIndex = 0; sourceIndex < iterables.length; sourceIndex++) {
@@ -34,7 +30,7 @@ export function* merge<T>(
         }
     }
 
-    heapify(heap, (a, b) => cmp(a.value, b.value));
+    heapify(heap, { comparator: (a, b) => cmp(a.value, b.value) });
 
     while (heap.length > 0) {
         if (heap.length === 1) {
@@ -49,7 +45,9 @@ export function* merge<T>(
             break;
         }
 
-        const smallest = heapPop(heap, (a, b) => cmp(a.value, b.value));
+        const smallest = heapPop(heap, {
+            comparator: (a, b) => cmp(a.value, b.value),
+        });
 
         if (smallest === undefined) {
             break;
@@ -65,7 +63,7 @@ export function* merge<T>(
                 sourceIndex: smallest.sourceIndex,
                 iterator: smallest.iterator,
             });
-            heapify(heap, (a, b) => cmp(a.value, b.value));
+            heapify(heap, { comparator: (a, b) => cmp(a.value, b.value) });
         }
     }
 }

@@ -19,7 +19,7 @@ describe(heapReplace.name, () => {
 
     it("should replace the root element of the heap with a custom comparator for max heap", () => {
         const heap = [3, 2, 1];
-        const result = heapReplace(heap, 4, (a, b) => a > b);
+        const result = heapReplace(heap, 4, { comparator: (a, b) => a > b });
         expect(result).toBe(3);
         expect(heap).toEqual([4, 2, 1]);
     });

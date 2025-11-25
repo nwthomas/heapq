@@ -17,7 +17,7 @@ describe(heapify.name, () => {
 
     it("should heapify an array with a custom comparator for max heap", () => {
         let heap = [3, 1, 2, 4, 5, 6, 7, 8, 9, 10];
-        heap = heapify(heap, (a, b) => a > b);
+        heap = heapify(heap, { comparator: (a, b) => a > b });
         expect(heap).toEqual([10, 9, 7, 8, 5, 6, 2, 3, 4, 1]);
     });
 });
