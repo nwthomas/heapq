@@ -124,6 +124,8 @@ console.log(heap); // [4, 3, 2, 1]
 The `heapPushPop` function pushes a value and pops a value from the heap in a single atomic operation using in-place operations and a final runtime of `O(log n)`. This function defaults to min heap operations. If the pushed value is less than the existing root value, the pushed value is returned:
 
 ```typescript
+import { heapPushPop } from "@nwthomas/heapq/heapPushPop";
+
 // Pushed value is greater than root value
 const heap = [1, 3, 2];
 const result = heapPushPop(heap, 4);
@@ -142,6 +144,8 @@ Unlike `heapReplace` (see further below), this will possibly return the new valu
 A custom comparator function can be provided to perform max heap comparisons or to operate on more complex data types:
 
 ```typescript
+import { heapPushPop } from "@nwthomas/heapq/heapPushPop";
+
 const heap = [20, 5, 10];
 const result = heapPushPop(heap, 4, (a, b) => a > b);
 console.log(result); // 20
@@ -153,6 +157,8 @@ console.log(heap); // [10, 5, 4]
 The `heapReplace` function replaces a the root value with a new value, sifts it down, and then returns the original root value. This operation happens in-place with a runtime of `O(log n)` and defaults to min heap operations:
 
 ```typescript
+import { heapReplace } from "@nwthomas/heapq/heapReplace";
+
 const heap = [1, 3, 2];
 const result = heapReplace(heap, 4);
 console.log(result); // 1
@@ -164,6 +170,8 @@ Unlike `heapPushPop` (see further above), this will always return the _previous_
 A custom comparator function can be provided to perform max heap comparisons or to operate on more complex data types:
 
 ```typescript
+import { heapReplace } from "@nwthomas/heapq/heapReplace";
+
 const heap = [3, 2, 1];
 const result = heapReplace(heap, 4, (a, b) => a > b);
 console.log(result); // 3
@@ -175,6 +183,8 @@ console.log(heap); // [4, 2, 1]
 The `merge` function takes in an array of heaps and an optional `options` object which can have a comparator function provided in it. It returns an iterator that can be called to progressively return ordered values from all iterables.
 
 ```typescript
+import { merge } from "@nwthomas/heapq/merge";
+
 const result = Array.from(
     merge([
         [1, 3, 5, 7],
@@ -189,6 +199,8 @@ The default logic is to return values sorted as a min heap. It's assumed that th
 A custom comparator function can be included in the options object to perform max heap comparisons or to operate on more complex data types:
 
 ```typescript
+import { merge } from "@nwthomas/heapq/merge";
+
 const result = Array.from(
     merge(
         [
