@@ -1,5 +1,11 @@
 # @nwthomas/heapq
 
+## 0.1.0
+
+### Minor Changes
+
+- [`fd2c61e`](https://github.com/nwthomas/heapq/commit/fd2c61e1f8d2e14e3452c0b47d2d385046563cdf) Thanks [@nwthomas](https://github.com/nwthomas)! - Move merge function to use array of heaps an options object
+
 ## 0.0.5
 
 ### Patch Changes
