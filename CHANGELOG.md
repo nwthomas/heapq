@@ -1,5 +1,11 @@
 # @nwthomas/heapq
 
+## 0.2.1
+
+### Patch Changes
+
+- [`8e41207`](https://github.com/nwthomas/heapq/commit/8e4120737c6f974bf0dd07b69d2543b603ae2ed9) Thanks [@nwthomas](https://github.com/nwthomas)! - Export Options from types TS file
+
 ## 0.2.0
 
 ### Minor Changes
