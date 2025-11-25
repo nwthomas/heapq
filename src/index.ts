@@ -7,4 +7,4 @@ export { heapReplace } from "./heapReplace";
 export { merge } from "./merge";
 
 // Types
-export type { Comparator } from "./types";
+export type { Comparator, Options } from "./types";
