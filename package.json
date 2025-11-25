@@ -1,7 +1,7 @@
 {
     "name": "@nwthomas/heapq",
     "description": "TypeScript implementation of Python's heapq module with functional heap operations",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "author": "Nathan Thomas",
     "license": "GPL-3.0-only",
     "repository": {
