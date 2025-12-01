@@ -1,5 +1,11 @@
 # heapq 🥞
 
+[![TypeScript](https://badges.frapsoft.com/typescript/code/typescript.svg?v=101)](https://github.com/nwthomas/heapq)
+[![Build](https://github.com/nwthomas/heapq/actions/workflows/publish.yml/badge.svg)](https://github.com/nwthomas/heapq/actions/workflows/publish.yml)
+[![npm version](https://badge.fury.io/js/%40nwthomas%2Fheapq.svg)](https://www.npmjs.com/package/@nwthomas/heapq)
+
+[![NPM](https://nodei.co/npm/@nwthomas/heapq.svg?data=d,s)](https://nodei.co/npm/@nwthomas/heapq/)
+
 A TypeScript implementation of the Python [heapq](https://docs.python.org/3/library/heapq.html) module.
 
 I got tired of not having a great heap module in the JavaScript standard library, and all of the ones on npm either haven't been touched in the better part of a decade or feel super sketchy.
