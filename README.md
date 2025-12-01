@@ -219,6 +219,30 @@ const result = Array.from(
 console.log(result); // [8, 7, 6, 5, 4, 3, 2, 1]
 ```
 
+### nLargest
+
+The `nLargest` function will return the `n` amount of largest numbers in the heap. It's assumed the array being operated on is a valid heap.
+
+```typescript
+import { nLargest } from "@nwthomas/heapq/nLargest";
+
+const heap = [1, 3, 2, 4, 5, 6, 7, 8, 9, 10];
+const result = nLargest(heap, 3);
+console.log(result); // [10, 9, 8]
+```
+
+### nSmallest
+
+The `nSmallest` function will return the `n` amount of smallest numbers in the heap. It's assumed the array being operated on is a valid heap.
+
+```typescript
+import { nSmallest } from "@nwthomas/heapq/nSmallest";
+
+const heap = [1, 3, 2, 4, 5, 6, 7, 8, 9, 10];
+const result = nSmallest(heap, 3);
+console.log(result); // [1, 2, 3]
+```
+
 ## TypeScript Support
 
 Full TypeScript types are included out of the box with no need for an extra `@types` package. Example:

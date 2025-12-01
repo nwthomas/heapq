@@ -1,5 +1,6 @@
 import {
-    _defaultComparator,
+    _defaultMaxHeapComparator,
+    _defaultMinHeapComparator,
     _getLeftChildIndex,
     _getParentIndex,
     _getRightChildIndex,
@@ -10,14 +11,26 @@ import {
 import { describe, expect, it } from "bun:test";
 
 describe("utils", () => {
-    describe("_defaultComparator", () => {
+    describe(_defaultMinHeapComparator.name, () => {
         it("should return true if a < b", () => {
-            const result = _defaultComparator(1, 2);
+            const result = _defaultMinHeapComparator(1, 2);
             expect(result).toBe(true);
         });
 
         it("should return false if a >= b", () => {
-            const result = _defaultComparator(2, 1);
+            const result = _defaultMinHeapComparator(2, 1);
+            expect(result).toBe(false);
+        });
+    });
+
+    describe(_defaultMaxHeapComparator.name, () => {
+        it("should return true if a > b", () => {
+            const result = _defaultMaxHeapComparator(2, 1);
+            expect(result).toBe(true);
+        });
+
+        it("should return false if a <= b", () => {
+            const result = _defaultMaxHeapComparator(2, 2);
             expect(result).toBe(false);
         });
     });
@@ -76,7 +89,7 @@ describe("utils", () => {
     describe(_siftDown.name, () => {
         it("should sift down the root element of the heap", () => {
             const heap = [3, 1, 2];
-            _siftDown(heap, 0, _defaultComparator);
+            _siftDown(heap, 0, _defaultMinHeapComparator);
             expect(heap).toEqual([1, 3, 2]);
         });
 
@@ -90,7 +103,7 @@ describe("utils", () => {
     describe(_siftUp.name, () => {
         it("should sift up the last element of the heap", () => {
             const heap = [3, 2, 1];
-            _siftUp(heap, 2, _defaultComparator);
+            _siftUp(heap, 2, _defaultMinHeapComparator);
             expect(heap).toEqual([1, 2, 3]);
         });
 

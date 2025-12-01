@@ -48,6 +48,16 @@
             "import": "./lib/merge.js",
             "require": "./lib/merge.cjs"
         },
+        "./nLargest": {
+            "types": "./lib/nLargest.d.ts",
+            "import": "./lib/nLargest.js",
+            "require": "./lib/nLargest.cjs"
+        },
+        "./nSmallest": {
+            "types": "./lib/nSmallest.d.ts",
+            "import": "./lib/nSmallest.js",
+            "require": "./lib/nSmallest.cjs"
+        },
         "./types": {
             "types": "./lib/types.d.ts",
             "import": "./lib/types.js",

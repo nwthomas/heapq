@@ -1,7 +1,11 @@
 import type { Comparator } from "./types";
 
-export function _defaultComparator<T>(a: T, b: T): boolean {
+export function _defaultMinHeapComparator<T>(a: T, b: T): boolean {
     return a < b;
+}
+
+export function _defaultMaxHeapComparator<T>(a: T, b: T): boolean {
+    return a > b;
 }
 
 export function _getLeftChildIndex(index: number): number {

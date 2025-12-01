@@ -1,4 +1,4 @@
-import { _defaultComparator, _siftDown } from "./utils";
+import { _defaultMinHeapComparator, _siftDown } from "./utils";
 import { heapPush } from "./heapPush";
 
 import type { Options } from "./types";
@@ -8,7 +8,7 @@ export function heapReplace<T>(
     value: T,
     options?: Options<T>,
 ): T | void {
-    const cmp = options?.comparator ?? _defaultComparator<T>;
+    const cmp = options?.comparator ?? _defaultMinHeapComparator<T>;
 
     if (heap.length === 0) {
         heapPush(heap, value, options);

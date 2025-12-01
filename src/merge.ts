@@ -1,6 +1,6 @@
 import { heapPop } from "./heapPop";
 import { heapify } from "./heapify";
-import { _defaultComparator } from "./utils";
+import { _defaultMinHeapComparator } from "./utils";
 
 import type { Options } from "./types";
 
@@ -14,7 +14,7 @@ export function* merge<T>(
     iterables: Iterable<T>[],
     options?: Options<T>,
 ): Generator<T, void, undefined> {
-    const cmp = options?.comparator ?? _defaultComparator<T>;
+    const cmp = options?.comparator ?? _defaultMinHeapComparator<T>;
     const heap: HeapEntry<T>[] = [];
 
     for (let sourceIndex = 0; sourceIndex < iterables.length; sourceIndex++) {
