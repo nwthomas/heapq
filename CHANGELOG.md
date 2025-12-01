@@ -1,5 +1,11 @@
 # @nwthomas/heapq
 
+## 1.0.0
+
+### Major Changes
+
+- [`22a07bb`](https://github.com/nwthomas/heapq/commit/22a07bbb4c336897c75c74aab36e31f963f40404) Thanks [@nwthomas](https://github.com/nwthomas)! - Finish all core heapq functions and release 1.0.0
+
 ## 0.2.1
 
 ### Patch Changes
