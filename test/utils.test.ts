@@ -1,5 +1,4 @@
 import {
-    _defaultMaxHeapComparator,
     _defaultMinHeapComparator,
     _getLeftChildIndex,
     _getParentIndex,
@@ -19,18 +18,6 @@ describe("utils", () => {
 
         it("should return false if a >= b", () => {
             const result = _defaultMinHeapComparator(2, 1);
-            expect(result).toBe(false);
-        });
-    });
-
-    describe(_defaultMaxHeapComparator.name, () => {
-        it("should return true if a > b", () => {
-            const result = _defaultMaxHeapComparator(2, 1);
-            expect(result).toBe(true);
-        });
-
-        it("should return false if a <= b", () => {
-            const result = _defaultMaxHeapComparator(2, 2);
             expect(result).toBe(false);
         });
     });

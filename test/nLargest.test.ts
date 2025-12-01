@@ -27,4 +27,26 @@ describe(nLargest.name, () => {
         const result = nLargest([1, 3, 2, 4, 5, 6, 7, 8, 9, 10], 11);
         expect(result).toEqual([10, 9, 8, 7, 6, 5, 4, 3, 2, 1]);
     });
+
+    it("allows a custom comparator to be provided", () => {
+        const result = nLargest(
+            [
+                { a: 1 },
+                { a: 3 },
+                { a: 2 },
+                { a: 4 },
+                { a: 5 },
+                { a: 6 },
+                { a: 7 },
+                { a: 8 },
+                { a: 9 },
+                { a: 10 },
+            ],
+            3,
+            {
+                comparator: (a, b) => a.a < b.a,
+            },
+        );
+        expect(result).toEqual([{ a: 10 }, { a: 9 }, { a: 8 }]);
+    });
 });

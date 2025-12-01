@@ -1,11 +1,15 @@
-import type { Options } from "./types";
 import { heapReplace } from "./heapReplace";
 import { heapify } from "./heapify";
+import type { Options } from "./types";
 import { _defaultMinHeapComparator } from "./utils";
 
-export function nLargest<T>(iterable: T[], n: number): T[] {
+export function nLargest<T>(
+    iterable: T[],
+    n: number,
+    options?: Options<T>,
+): T[] {
     const size = iterable.length;
-    const cmp = _defaultMinHeapComparator<T>;
+    const cmp = options?.comparator ?? _defaultMinHeapComparator<T>;
 
     if (n <= 0) {
         return [];

@@ -4,10 +4,6 @@ export function _defaultMinHeapComparator<T>(a: T, b: T): boolean {
     return a < b;
 }
 
-export function _defaultMaxHeapComparator<T>(a: T, b: T): boolean {
-    return a > b;
-}
-
 export function _getLeftChildIndex(index: number): number {
     return (index << 1) + 1;
 }
