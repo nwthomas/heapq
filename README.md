@@ -2,7 +2,7 @@
 
 [![TypeScript](https://badges.frapsoft.com/typescript/code/typescript.svg?v=101)](https://github.com/nwthomas/heapq)
 [![Build](https://github.com/nwthomas/heapq/actions/workflows/publish.yml/badge.svg)](https://github.com/nwthomas/heapq/actions/workflows/publish.yml)
-[![npm version](https://badge.fury.io/js/%40nwthomas%2Fheapq.svg)](https://www.npmjs.com/package/@nwthomas/heapq)
+[![npm](https://img.shields.io/npm/v/@nwthomas/heapq)](https://www.npmjs.com/package/@nwthomas/heapq)
 
 [![NPM](https://nodei.co/npm/@nwthomas/heapq.svg?data=d,s)](https://nodei.co/npm/@nwthomas/heapq/)
 
