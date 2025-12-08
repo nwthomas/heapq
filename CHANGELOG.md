@@ -1,5 +1,11 @@
 # @nwthomas/heapq
 
+## 1.1.0
+
+### Minor Changes
+
+- [`fd8f79a`](https://github.com/nwthomas/heapq/commit/fd8f79ab2759d25f5050b0986b04177374da6e5d) Thanks [@nwthomas](https://github.com/nwthomas)! - Fix heapPop behavior with array length 1
+
 ## 1.0.0
 
 ### Major Changes
