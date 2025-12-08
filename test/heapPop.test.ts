@@ -16,6 +16,14 @@ describe(heapPop.name, () => {
         expect(result).toBeUndefined();
     });
 
+    it("should not contain undefined when used on an array of length one", () => {
+        const heap = [1];
+        const result = heapPop(heap);
+        expect(result).toBe(1);
+        expect(heap).toEqual([]);
+        expect(heap).toHaveLength(0);
+    });
+
     it("should pop the root element of the heap with a custom comparator for max heap", () => {
         const heap = [3, 1, 2];
         const result = heapPop(heap, { comparator: (a, b) => a > b });

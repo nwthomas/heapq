@@ -6,6 +6,9 @@ export function heapPop<T>(heap: T[], options?: Options<T>): T | void {
     if (heap.length === 0) {
         return;
     }
+    if (heap.length === 1) {
+        return heap.pop();
+    }
 
     const cmp = options?.comparator ?? _defaultMinHeapComparator<T>;
 
