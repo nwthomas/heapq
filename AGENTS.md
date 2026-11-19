@@ -11,7 +11,7 @@ This is a TypeScript implementation of Python's heapq module, providing a min-he
 ### Development
 
 - `make install` (or `make i`) - Install dependencies
-- `make build` - Build package using tsup (ESM output in `lib/`)
+- `make build` - Build package using tsup (ESM and CJS output in `lib/`)
 - `make dev` - Build in watch mode for development
 - `make clean` - Remove the `lib/` build output directory
 
@@ -72,7 +72,7 @@ Contains the core heap algorithms (prefixed with `_` to indicate internal use):
 
 This project uses **tsup** (powered by esbuild) for building:
 
-- Compiles TypeScript to ESM-only JavaScript in `lib/`
+- Compiles TypeScript to both ESM and CJS JavaScript in `lib/`
 - Generates minified output for optimal bundle size
 - Creates TypeScript declaration files (`.d.ts`) for type support
 - Generates source maps for debugging

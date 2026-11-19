@@ -80,7 +80,7 @@ console.log(heap); // [10, 9, 7, 8, 5, 6, 2, 3, 4, 1]
 
 ### heapPop
 
-The `heapPop` function will top off a value from a given heap in `O(log n)` time. It sifts up the next value in-place to take the place of the root that has been popped off. This funciton defaults to min heap operations:
+The `heapPop` function will pop off a value from a given heap in `O(log n)` time. It moves the last value into the root's place and sifts it down in-place. This function defaults to min heap operations:
 
 ```typescript
 import { heapPop } from "@nwthomas/heapq/heapPop";
@@ -139,13 +139,13 @@ console.log(result); // 1
 console.log(heap); // [2, 3, 4]
 
 // Pushed value is less than root value
-const heap = [2, 3, 4];
-const result = heapPushPop(heap, 1);
-console.log(result); // 1
-console.log(heap); // [2, 3, 4]
+const heap2 = [2, 3, 4];
+const result2 = heapPushPop(heap2, 1);
+console.log(result2); // 1
+console.log(heap2); // [2, 3, 4]
 ```
 
-Unlike `heapReplace` (see further below), this will possibly return the new value as it's first pushed to the heap and then a value is popped off and returned.
+Unlike `heapReplace` (see further below), this may return the new value, since the value is pushed first and then the smallest value is popped off and returned.
 
 A custom `comparator` function can be provided in an `options` object to perform max heap comparisons or to operate on more complex data types:
 
@@ -160,7 +160,7 @@ console.log(heap); // [10, 5, 4]
 
 ### heapReplace
 
-The `heapReplace` function replaces a the root value with a new value, sifts it down, and then returns the original root value. This operation happens in-place with a runtime of `O(log n)` and defaults to min heap operations:
+The `heapReplace` function replaces the root value with a new value, sifts it down, and then returns the original root value. This operation happens in-place with a runtime of `O(log n)` and defaults to min heap operations:
 
 ```typescript
 import { heapReplace } from "@nwthomas/heapq/heapReplace";
@@ -200,7 +200,7 @@ const result = Array.from(
 console.log(result); // [1, 2, 3, 4, 5, 6, 7, 8]
 ```
 
-The default logic is to return values sorted as a min heap. It's assumed that the heaps included to be merged are already sorted appropriately according to the heap logic you're using (e.g. min or max heap).
+The default logic is to return values sorted as a min heap. It's assumed that the heaps being merged are already sorted appropriately according to the heap logic you're using (e.g. min or max heap).
 
 A custom comparator function can be included in the options object to perform max heap comparisons or to operate on more complex data types:
 
@@ -221,7 +221,7 @@ console.log(result); // [8, 7, 6, 5, 4, 3, 2, 1]
 
 ### nLargest
 
-The `nLargest` function will return the `n` amount of largest numbers in the heap. It's assumed the array being operated on is a valid heap.
+The `nLargest` function will return the `n` largest numbers in the heap. It's assumed the array being operated on is a valid heap.
 
 ```typescript
 import { nLargest } from "@nwthomas/heapq/nLargest";
@@ -233,7 +233,7 @@ console.log(result); // [10, 9, 8]
 
 ### nSmallest
 
-The `nSmallest` function will return the `n` amount of smallest numbers in the heap. It's assumed the array being operated on is a valid heap.
+The `nSmallest` function will return the `n` smallest numbers in the heap. It's assumed the array being operated on is a valid heap.
 
 ```typescript
 import { nSmallest } from "@nwthomas/heapq/nSmallest";
@@ -248,17 +248,17 @@ console.log(result); // [1, 2, 3]
 Full TypeScript types are included out of the box with no need for an extra `@types` package. Example:
 
 ```typescript
-import { heapPush, type Comparator } from "@nwthomas/heapq";
+import { heapPop, heapPush, type Comparator } from "@nwthomas/heapq";
 
 // Custom comparator for changing the min heap implementation to a max heap
-const maxHeapComparator: Comparator<number> = (a, b) => a > b;
+const comparator: Comparator<number> = (a, b) => a > b;
 
 const maxHeap: number[] = [];
-heapPush(maxHeap, 1, maxHeapComparator);
-heapPush(maxHeap, 5, maxHeapComparator);
-heapPush(maxHeap, 3, maxHeapComparator);
-console.log(heapPop(maxHeap, maxHeapComparator)); // 5
-console.log(heap); // [3, 1]
+heapPush(maxHeap, 1, { comparator });
+heapPush(maxHeap, 5, { comparator });
+heapPush(maxHeap, 3, { comparator });
+console.log(heapPop(maxHeap, { comparator })); // 5
+console.log(maxHeap); // [3, 1]
 ```
 
 ## Development Setup
@@ -279,4 +279,4 @@ This should install everything you need to start making changes to this repo.
 
 ## Acknowledgements
 
-- Thank you to [Synk](https://snyk.io) for writing a great guide on getting up to speed with [npm publishing in 2025](https://snyk.io/blog/best-practices-create-modern-npm-package)
+- Thank you to [Snyk](https://snyk.io) for writing a great guide on getting up to speed with [npm publishing in 2025](https://snyk.io/blog/best-practices-create-modern-npm-package)
