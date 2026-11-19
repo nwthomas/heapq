@@ -1,8 +1,9 @@
 import { heapPop } from "./heapPop";
+import { heapReplace } from "./heapReplace";
 import { heapify } from "./heapify";
 import { _defaultMinHeapComparator } from "./utils";
 
-import type { Options } from "./types";
+import type { Comparator, Options } from "./types";
 
 type HeapEntry<T> = {
     value: T;
@@ -15,6 +16,14 @@ export function* merge<T>(
     options?: Options<T>,
 ): Generator<T, void, undefined> {
     const cmp = options?.comparator ?? _defaultMinHeapComparator<T>;
+
+    const entryComparator: Comparator<HeapEntry<T>> = (a, b) => {
+        if (cmp(a.value, b.value)) return true;
+        if (cmp(b.value, a.value)) return false;
+        return a.sourceIndex < b.sourceIndex;
+    };
+
+    const heapOptions = { comparator: entryComparator };
     const heap: HeapEntry<T>[] = [];
 
     for (let sourceIndex = 0; sourceIndex < iterables.length; sourceIndex++) {
@@ -22,48 +31,41 @@ export function* merge<T>(
         const result = iterator.next();
 
         if (!result.done) {
-            heap.push({
-                value: result.value,
-                sourceIndex,
-                iterator,
-            });
+            heap.push({ value: result.value, sourceIndex, iterator });
         }
     }
 
-    heapify(heap, { comparator: (a, b) => cmp(a.value, b.value) });
+    heapify(heap, heapOptions);
 
-    while (heap.length > 0) {
-        if (heap.length === 1) {
-            const entry = heap[0]!;
-            yield entry.value;
+    while (heap.length > 1) {
+        const top = heap[0]!;
+        yield top.value;
 
-            let result = entry.iterator.next();
-            while (!result.done) {
-                yield result.value;
-                result = entry.iterator.next();
-            }
-            break;
+        const next = top.iterator.next();
+
+        if (next.done) {
+            heapPop(heap, heapOptions);
+        } else {
+            heapReplace(
+                heap,
+                {
+                    value: next.value,
+                    sourceIndex: top.sourceIndex,
+                    iterator: top.iterator,
+                },
+                heapOptions,
+            );
         }
+    }
 
-        const smallest = heapPop(heap, {
-            comparator: (a, b) => cmp(a.value, b.value),
-        });
+    if (heap.length === 1) {
+        const { value, iterator } = heap[0]!;
+        yield value;
 
-        if (smallest === undefined) {
-            break;
-        }
-
-        yield smallest.value;
-
-        const nextResult = smallest.iterator.next();
-
-        if (!nextResult.done) {
-            heap.push({
-                value: nextResult.value,
-                sourceIndex: smallest.sourceIndex,
-                iterator: smallest.iterator,
-            });
-            heapify(heap, { comparator: (a, b) => cmp(a.value, b.value) });
+        let result = iterator.next();
+        while (!result.done) {
+            yield result.value;
+            result = iterator.next();
         }
     }
 }

@@ -44,9 +44,27 @@ describe(nSmallest.name, () => {
             ],
             3,
             {
-                comparator: (a, b) => a.a > b.a,
+                comparator: (a, b) => a.a < b.a,
             },
         );
+        expect(result).toEqual([{ a: 1 }, { a: 2 }, { a: 3 }]);
+    });
+
+    it("treats the comparator the same way as nLargest and the heap functions", () => {
+        const values = [5, 1, 4, 2, 3];
+        const lessThan = (a: number, b: number) => a < b;
+        expect(nSmallest(values, 2, { comparator: lessThan })).toEqual(
+            nSmallest(values, 2),
+        );
+        expect(nSmallest(values, 2, { comparator: (a, b) => a > b })).toEqual([
+            5, 4,
+        ]);
+    });
+
+    it("sorts the full result with a custom comparator when n exceeds the length", () => {
+        const result = nSmallest([{ a: 3 }, { a: 1 }, { a: 2 }], 5, {
+            comparator: (a, b) => a.a < b.a,
+        });
         expect(result).toEqual([{ a: 1 }, { a: 2 }, { a: 3 }]);
     });
 });
