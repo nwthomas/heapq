@@ -1,5 +1,13 @@
 # @nwthomas/heapq
 
+## 2.0.0
+
+### Major Changes
+
+- [`65cf321`](https://github.com/nwthomas/heapq/commit/65cf321a4a36d69b9374dc4fb3e2da7f7ca8c074) Thanks [@nwthomas](https://github.com/nwthomas)! - **Breaking:** `nSmallest` now reads a custom comparator the same way as `nLargest` and the heap functions: `comparator(a, b)` returns `true` when `a` ranks before `b`. Previously it expected the reversed comparator. To get the smallest items by a field, pass `(a, b) => a.field < b.field`; if you passed `>` before, change it to `<`.
+
+    `merge` now yields equal values in the order of their source iterables (stable, like Python's `heapq.merge`) and runs in O(N log k) instead of rebuilding the heap after every value.
+
 ## 1.1.0
 
 ### Minor Changes
